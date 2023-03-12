@@ -188,3 +188,26 @@ export enum UpdatesLogEntryLevel {
  * @hidden
  */
 export type LocalAssets = Record<string, string>;
+
+/**
+ * Updates info structure provided by UpdatesProvider.
+ */
+export type UpdatesInfo = {
+  /**
+   * The manifest for the currently running update.
+   */
+  currentlyRunning: Partial<Manifest>;
+  /**
+   * If a new available update has been found, either by using checkForUpdate(), or by the UpdateEvent listener in useUpdates(),
+   * this will contain the manifest for that update.
+   */
+  updateAvailable?: Partial<Manifest>;
+  /**
+   * True if the application is running the embedded bundle and not a downloaded update.
+   */
+  embedded: boolean;
+  /**
+   * If an error is returned by the UpdateEvent listener, the error description will appear here.
+   */
+  error?: string;
+};
